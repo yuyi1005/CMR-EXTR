@@ -279,8 +279,8 @@ def confidence_distribution(structured, confidence):
 
 
 if __name__ == "__main__":
-    src_dir = '/fs/ess/PDE0069/Data/CMR'
-    dst_dir = '/fs/ess/PDE0069/Data/CMR-Extracted-GPT-OSS'
+    src_dir = '/path/to/datasets/CMR'
+    dst_dir = '/path/to/datasets/CMR-Extracted-GPT-OSS'
     os.makedirs(dst_dir, exist_ok=True)
     confidence_file = os.path.join(dst_dir, 'confidence_scores.txt')
     open(confidence_file, "w").close()
@@ -298,7 +298,7 @@ if __name__ == "__main__":
     train_data = train_data[rank::world_size]
     print(f'rank {rank} is dealing with {len(train_data)} data')
     
-    llm = LLM(model="/fs/scratch/PCON0521/yuyi1005/openai-gpt-oss-20b",
+    llm = LLM(model="/path/to/models/openai-gpt-oss-20b",
              gpu_memory_utilization=0.9,
              disable_custom_all_reduce=True,
              async_scheduling=True)
