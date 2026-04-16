@@ -110,13 +110,13 @@ def load_dataset(path, fold=0):
 
 if __name__ == "__main__":
     # 1. Load dataset
-    train_data = load_dataset('/fs/ess/PDE0069/Data/CMR-Extracted-GPT-OSS')
+    train_data = load_dataset('/path/to/datasets/CMR-Extracted-GPT-OSS')
 
     # 2. Save dataset in HF format
     dataset = Dataset.from_list(train_data)
 
     # 3. Load model + tokenizer
-    model_path = "/fs/scratch/PCON0521/yuyi1005"
+    model_path = "/path/to/models"
     model_name = "meta-llama-3.2-1b-instruct"
     tokenizer = AutoTokenizer.from_pretrained(os.path.join(model_path, model_name))
     tokenizer.pad_token = tokenizer.eos_token
@@ -155,7 +155,7 @@ if __name__ == "__main__":
 
     # 6. Training arguments
     args = TrainingArguments(
-        output_dir="./llama-3.2-1b-cmr-re",
+        output_dir="./llama-3.2-1b-finetuned",
         per_device_train_batch_size=2,
         gradient_accumulation_steps=1,
         num_train_epochs=5,
@@ -179,4 +179,4 @@ if __name__ == "__main__":
     trainer.train()
 
     # 8. Save adapter
-    model.save_pretrained("./llama-3.2-1b-cmr-re")
+    model.save_pretrained("./llama-3.2-1b-finetuned")
