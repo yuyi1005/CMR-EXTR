@@ -5,7 +5,7 @@ from peft import PeftModel
 
 if __name__ == "__main__":
     # Load tokenizer
-    model_path = "/fs/scratch/PCON0521/yuyi1005"
+    model_path = "/path/to/models"
     model_name = "meta-llama-3.2-1b-instruct"
     tokenizer = AutoTokenizer.from_pretrained(os.path.join(model_path, model_name))
     tokenizer.pad_token = tokenizer.eos_token
@@ -25,10 +25,10 @@ if __name__ == "__main__":
     )
 
     # Load LoRA adapter
-    lora_path = "./llama-3.2-1b-cmr-re"  # path where LoRA adapter was saved
+    lora_path = "./llama-3.2-1b-finetuned"  # path where LoRA adapter was saved
     model = PeftModel.from_pretrained(model, lora_path)
 
-    merged_model_path = "./llama-3.2-1b-cmr-re-merged"
+    merged_model_path = "./cmrextr-1b"
     model = model.merge_and_unload()
     model.save_pretrained(merged_model_path)
     tokenizer.save_pretrained(merged_model_path)
