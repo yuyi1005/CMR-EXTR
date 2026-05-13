@@ -1,4 +1,7 @@
 # Uncertainty-Aware Structured Data Extraction from Full CMR Reports via Distilled LLMs
+<div align="center">
+      <a href='https://arxiv.org/abs/2605.08045'><img src='https://img.shields.io/badge/arXiv-2605.08045-brown.svg?logo=arxiv&logoColor=white'></a>
+</div>
 
 CMR-EXTR is a lightweight framework for extracting structured data from free-text cardiac magnetic resonance (CMR) reports. The model is trained via a teacher–student distillation pipeline and supports efficient offline inference with uncertainty-aware outputs.
 
